@@ -1,0 +1,10 @@
+<% modifiers =|| "" %>
+<% heading =|| "" %>
+<% logo =|| "" %>
+
+<div class="logo <% modifiers %>">
+  <% link_to '/', :class => 'logo__link' do %>
+    <%= image_tag '#{logo}', :class => 'logo__image' %>
+    <span class="logo__heading"><%= heading %></span>
+  <% end %>
+</div>
