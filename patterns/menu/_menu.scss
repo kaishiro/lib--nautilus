@@ -53,6 +53,20 @@
         }
       }
 
+      &[title=instagram] {
+
+        &:before {
+          @include nt-icon(instagram, 28, $color-menu-social-icon-palm);
+        }
+      }
+
+      &[title=pinterest] {
+
+        &:before {
+          @include nt-icon(pinterest, 28, $color-menu-social-icon-palm);
+        }
+      }
+
       &[title=email] {
 
         &:before {
@@ -152,6 +166,13 @@
 
         &:before {
           @include nt-icon(gplus-squared, 28, $color-menu-social-icon-palm);
+        }
+      }
+
+      &[title=pinterest] {
+
+        &:before {
+          @include nt-icon(pinterest-squared, 28, $color-menu-social-icon-palm);
         }
       }
     }
