@@ -1,0 +1,14 @@
+/**
+* nt-main
+*
+*/
+
+@mixin nt-main($modifier:default, $context: all) {
+
+  @if $modifier == "default" {
+
+    @include position(relative, null null null null);
+    @include nt-layer(ground);
+    @include nt-background($color-main-background);
+  }
+}

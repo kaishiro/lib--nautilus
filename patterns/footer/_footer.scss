@@ -1,0 +1,35 @@
+/**
+* nt-footer
+*
+*/
+
+@mixin nt-footer($modifier:default, $context: all) {
+
+  @include nt-background($color-footer-background);
+
+  @if $modifier == "default" {
+
+    @include position(relative, null null null null);
+    @include nt-layer(ground);
+  }
+
+  @if $modifier == "slideRight" {
+    .footer {
+      @include position(fixed, null 0 0 null);
+      @include size($width-navigation null);
+      @include nt-layer(loft);
+      @include transform(translateX(100%) !important);
+    }
+
+    // States
+    .page {
+
+      &.active--navigation {
+
+        .footer {
+          @include transform(translateX(0%) !important);
+        }
+      }
+    }
+  }
+}
