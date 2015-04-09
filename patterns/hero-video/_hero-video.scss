@@ -1,0 +1,38 @@
+/**
+* nt-hero-video
+*
+*/
+
+@mixin nt-hero-video($modifier:default, $context: all) {
+
+  @if $modifier == "default" {
+
+    .hero-video__video {
+      @include size(100% auto);
+    }
+  }
+
+  @if $modifier == "fullscreen" {
+
+    @include media($mq-lap) {
+
+      .hero-video__video {
+        @include position(absolute, null 0 0 null);
+        @include size(auto auto);
+        min-width: 100%;
+        min-height: 100%;
+      }
+    }
+  }
+
+  @if $modifier == "fixed" {
+
+    @include media($mq-lap) {
+
+      .hero-video__video {
+        @include position(fixed, null 0 0 null);
+      }
+    }
+  }
+
+}

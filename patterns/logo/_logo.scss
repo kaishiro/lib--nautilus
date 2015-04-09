@@ -1,0 +1,93 @@
+/**
+* nt-logo
+*
+**/
+
+@mixin nt-logo($modifier, $context: all) {
+
+  @if $modifier == "left" {
+
+    @include position(relative, null null null null);
+    @include nt-max-size(50% null);
+    float: left;
+
+    .logo__heading {
+      display: none;
+    }
+
+    .logo__image {
+      display: block;
+      @include position(relative, null null null null);
+      @include size(auto $height-header-palm);
+      @include margin(null auto null auto);
+      max-width: 100%;
+    }
+
+    @include media($mq-lap) {
+
+      .logo__image {
+        @include size(auto $height-header-lap);
+      }
+    }
+
+    @include media($mq-desk) {
+
+      .logo__image {
+        @include size(auto $height-header-desk);
+      }
+    }
+  }
+
+  @if $modifier == "center" {
+
+    @include position(relative, null null null null);
+    @include margin(null auto null auto);
+    @include padding(.5em null .5em null);
+    @include size(50% null);
+
+    .logo__heading {
+      display: none;
+    }
+
+    .logo__image {
+      display: block;
+      @include position(relative, null null null null);
+      @include size(null auto);
+      @include margin(null auto null auto);
+      max-width: 100%;
+      background: darken($color-theme-primary, 5%);
+    }
+
+    @include media($mq-desk) {
+
+    }
+  }
+
+  @if $modifier == "right" {
+
+    @include position(relative, null null null null);
+    @include margin(null auto null auto);
+    @include padding(.5em null .5em null);
+    @include size(50% null);
+
+    .logo__heading {
+      display: none;
+    }
+
+    .logo__image {
+      display: block;
+      @include position(relative, null null null null);
+      @include size(null auto);
+      @include margin(null auto null auto);
+      max-width: 100%;
+      background: darken($color-theme-primary, 5%);
+    }
+
+    @include media($mq-desk) {
+
+      @include size(auto null);
+      @include margin(null 0 null 0);
+      float: right;
+    }
+  }
+}

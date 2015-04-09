@@ -1,0 +1,105 @@
+/**
+* nt-toggle
+*
+**/
+
+@mixin nt-toggle($modifier, $context: all) {
+
+  @include size(2.5em 100%);
+  text-align: center;
+
+  @include media($mq-lap) {
+
+    &:after {
+      @include transition(color, 100ms, linear);
+    }
+  }
+
+  @if $modifier == "right" {
+
+    @include position(absolute, 0 0 null null);
+  }
+
+  @if $modifier == "right--1" {
+
+    @include position(absolute, 0 2.5em null null);
+  }
+
+  @if $modifier == "left" {
+
+    @include position(absolute, 0 null null 0);
+  }
+
+  @if $modifier == "left--1" {
+
+    @include position(absolute, 0 null null 2.5em);
+  }
+
+  @if $modifier == "navigation" {
+
+    &:after {
+      @include nt-icon(menu, 26, $color-toggle-navigation);
+    }
+
+    &:hover {
+
+      &:after {
+        @include nt-icon(menu, 26, $color-toggle-navigation-hover);
+      }
+    }
+
+    // STATES
+    .page {
+
+      &.active--navigation {
+
+        .toggle {
+
+          &.toggle--navigation {
+
+            &:after {
+              @include nt-icon(cancel, 26, $color-toggle-navigation-active);
+              @include animation-name(rotate);
+              @include animation-duration(100ms);
+              @include animation-timing-function(linear);
+              @include animation-iteration-count(1);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @if $modifier == "search" {
+
+    &:before {
+      @include nt-icon(search, 26, $color-toggle-search);
+    }
+
+    &:hover {
+
+      &:before {
+        @include nt-icon(search, 26, $color-toggle-search-hover);
+      }
+    }
+
+    // STATES
+  }
+
+  @if $modifier == "prefix--menu" {
+
+    &:before {
+      content: "Menu";
+      @include position(absolute, 50% null null -100%);
+      @include margin(-.6em null null null);
+      color: $color-toggle-navigation;
+    }
+
+    &:hover {
+
+      &:before {
+        color: $color-toggle-navigation-hover;
+      }
+    }
+  }
+}

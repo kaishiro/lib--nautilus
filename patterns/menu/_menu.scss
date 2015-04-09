@@ -1,0 +1,204 @@
+/**
+* nt-menu
+*
+*/
+
+@mixin nt-menu($modifier, $context: all) {
+
+  @if $modifier == "social" {
+    @include padding(null 1em null 1em);
+    
+    .menu__list {
+      text-align: right;
+    }
+
+    .menu__item {
+      display: inline-block;
+    }
+
+    .menu__link {
+
+      &[title=linkedin] {
+
+        &:before {
+          @include nt-icon(linkedin, 28, $color-menu-social-icon-palm);
+        }
+      }
+
+      &[title=twitter] {
+
+        &:before {
+          @include nt-icon(twitter, 28, $color-menu-social-icon-palm);
+        }
+      }
+
+      &[title=facebook] {
+
+        &:before {
+          @include nt-icon(facebook, 28, $color-menu-social-icon-palm);
+        }
+      }
+
+      &[title=youtube] {
+
+        &:before {
+          @include nt-icon(youtube, 28, $color-menu-social-icon-palm);
+        }
+      }
+
+      &[title=googleplus] {
+
+        &:before {
+          @include nt-icon(gplus, 28, $color-menu-social-icon-palm);
+        }
+      }
+
+      &[title=email] {
+
+        &:before {
+          @include nt-icon(mail-alt, 28, $color-menu-social-icon-palm);
+        }
+      }
+    }
+
+    .menu__copy {
+      display: none;
+    }
+
+    @include media($mq-lap) {
+
+      .menu__link {
+
+        &[title] {
+
+          &:before {
+            color: $color-menu-social-icon-lap;
+            @include transition(color, 100ms, linear);
+          }
+
+          &:hover {
+
+            &:before {
+              color: $color-menu-social-icon-hover-lap;
+            }
+          }
+        }
+      }
+    }
+
+    @include media($mq-desk) {
+
+      .menu__link {
+
+        &[title] {
+
+          &:before {
+            color: $color-menu-social-icon-desk;
+          }
+
+          &:hover {
+
+            &:before {
+              color: $color-menu-social-icon-hover-desk;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @if $modifier == "social-squared" {
+    @include padding(null 1em null 1em);
+    
+    .menu__list {
+      text-align: right;
+    }
+
+    .menu__item {
+      display: inline-block;
+    }
+
+    .menu__link {
+
+      &[title=linkedin] {
+
+        &:before {
+          @include nt-icon(linkedin-squared, 28, $color-menu-social-icon-palm);
+        }
+      }
+
+      &[title=twitter] {
+
+        &:before {
+          @include nt-icon(twitter-squared, 28, $color-menu-social-icon-palm);
+        }
+      }
+
+      &[title=facebook] {
+
+        &:before {
+          @include nt-icon(facebook-squared, 28, $color-menu-social-icon-palm);
+        }
+      }
+
+      &[title=youtube] {
+
+        &:before {
+          @include nt-icon(youtube-squared, 28, $color-menu-social-icon-palm);
+        }
+      }
+
+      &[title=googleplus] {
+
+        &:before {
+          @include nt-icon(gplus-squared, 28, $color-menu-social-icon-palm);
+        }
+      }
+    }
+
+    .menu__copy {
+      display: none;
+    }
+
+    @include media($mq-lap) {
+
+      .menu__link {
+
+        &[title] {
+
+          &:before {
+            color: $color-menu-social-icon-lap;
+            @include transition(color, 100ms, linear);
+          }
+
+          &:hover {
+
+            &:before {
+              color: $color-menu-social-icon-hover-lap;
+            }
+          }
+        }
+      }
+    }
+
+    @include media($mq-desk) {
+
+      .menu__link {
+
+        &[title] {
+
+          &:before {
+            color: $color-menu-social-icon-desk;
+          }
+
+          &:hover {
+
+            &:before {
+              color: $color-menu-social-icon-hover-desk;
+            }
+          }
+        }
+      }
+    }
+  }
+}

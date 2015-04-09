@@ -1,0 +1,68 @@
+/**
+* nt-slide
+*
+*/
+
+@mixin nt-slide($modifier, $context: all) {
+
+  @if $modifier == "no-cta" {
+
+    .slide__cta {
+      display: none;
+    }
+  }
+
+  @if $modifier == "ltr" {
+
+    @include media($mq-lap) {
+
+      .slide__heading {
+        @include span-columns(6);
+      }
+
+      .slide__subheading {
+        @include span-columns(6);
+        clear: left;
+      }
+
+      .slide__copy {
+        @include span-columns(6);
+        clear: left;
+      }
+
+      .slide__cta {
+        float: left;
+        clear: left;
+      }
+    }
+  }
+
+  @if $modifier == "rtl" {
+
+    @include media($mq-lap) {
+
+      .slide__heading {
+        @include span-columns(6);
+        @include shift(6);
+      }
+
+      .slide__subheading {
+        @include span-columns(6);
+        @include shift(6);
+        clear: left;
+      }
+
+      .slide__copy {
+        @include span-columns(6);
+        @include shift(6);
+        clear: left;
+      }
+
+      .slide__cta {
+        float: left;
+        @include shift(6);
+        clear: left;
+      }
+    }
+  }
+}

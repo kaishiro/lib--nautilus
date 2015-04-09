@@ -1,0 +1,373 @@
+/**
+* nt-navigation
+*
+**/
+
+@mixin nt-navigation($modifier, $context: all) {
+
+  .navigation {
+
+    &.navigation--primary {
+
+      @include media($mq-palm) {
+        @include nt-background($color-navigation-background-palm);
+
+        .navigation__item {
+          @include nt-background($color-navigation-item-background-palm);
+        }
+
+        .navigation__link {
+          display: block;
+        }
+
+        .navigation__copy {
+          color: $color-navigation-text-palm;
+        }
+      }
+
+      @include media($mq-lap) {
+        @include nt-background($color-navigation-background-lap);
+
+        .navigation__item {
+          @include nt-background($color-navigation-item-background-lap);
+
+          &:hover {
+            @include nt-background($color-navigation-item-background-hover-lap);
+
+            .navigation__copy {
+              color: $color-navigation-text-hover-lap;
+            }
+          }
+        }
+
+        .navigation__copy {
+          color: $color-navigation-text-lap;
+          @include transition(color, 100ms, linear);
+        }
+      }
+
+      @include media($mq-desk) {
+        @include nt-background($color-navigation-background-desk);
+
+        .navigation__item {
+          @include nt-background($color-navigation-item-background-desk);
+
+          &:hover {
+            @include nt-background($color-navigation-item-background-hover-desk);
+
+            .navigation__copy {
+              color: $color-navigation-text-hover-desk;
+            }
+          }
+        }
+
+        .navigation__copy {
+          color: $color-navigation-text-desk;
+        }
+      }
+    }
+  }
+
+  @if $modifier == "slideDown" {
+
+    // Pattern
+    .navigation {
+
+      &.navigation--primary {
+        @include position(fixed, 0 0 null null); 
+        @include size(100% auto);
+        @include padding(6em null 1em null);
+        @include transform(translateY(-100%));
+        @include transition(transform 500ms $ease-in-out-quint);
+
+        .navigation__link {
+          display: block;
+          @include padding(1em 1em 1em 1em);
+          text-align: center;
+          text-transform: uppercase;
+        }
+      }
+    }
+
+    // States
+    .page {
+
+      &.active--navigation {
+
+        .navigation--primary {
+          @include transform(translateY(0%));
+        }
+      }
+    }
+  }
+
+  @if $modifier == "pushRight" {
+
+    // Pattern
+    .navigation {
+
+      &.navigation--primary {
+        @include position(fixed, 0 0 null null); 
+        @include size($width-navigation 100%);
+        @include padding(1em null null null);
+        @include transform(translateX($width-navigation));
+        @include transition(transform 500ms $ease-in-out-quint);
+
+        .navigation__item {
+        }
+
+        .navigation__link {
+          @include padding(.5em 1em .5em 1em);
+          display: block;
+        }
+
+        .navigation__copy {
+
+        }
+      }
+    }
+
+    // States
+    .page {
+
+      .header {
+        @include transform(translateX(0px));
+        @include transition(all 500ms $ease-in-out-quint);
+      }
+
+      .main {
+        @include transform(translateX(0px));
+        @include transition(transform 500ms $ease-in-out-quint);
+      }
+
+      .footer {
+        @include transform(translateX(0px));
+        @include transition(transform 500ms $ease-in-out-quint);
+      }
+
+      &.active--navigation {
+        overflow-x: hidden;
+
+        .toggle {
+          
+          &.toggle--navigation {
+
+            &:after {
+              @include nt-icon("cancel", 22, $color-toggle-navigation-active);
+              @include animation-name(rotate);
+              @include animation-duration(100ms);
+              @include animation-timing-function(linear);
+              @include animation-iteration-count(1);
+            }
+          }
+        }
+
+        .navigation--primary {
+          @include transform(translateX(em(0)));
+        }
+
+        .header, .main, .footer {
+          @include transform(translateX(-$width-navigation));
+        }
+      }
+    }
+  }
+
+  @if $modifier == "slideLeft" {
+
+    // Pattern
+    .navigation {
+
+      &.navigation--primary {
+        @include position(fixed, 0 null null 0); 
+        @include size(em(220) 100%);
+        @include padding(1em null null null);
+
+        .navigation__item {
+        }
+
+        .navigation__link {
+          @include padding(.5em 1em .5em 1em);
+          display: block;
+        }
+
+        .navigation__copy {
+
+        }
+      }
+    }
+
+    // States
+    .page {
+
+      .header {
+        @include transform(translateX(0px));
+        @include transition(transform 500ms $ease-in-out-quint);
+      }
+
+      .main {
+        @include transform(translateX(0px));
+        @include transition(transform 500ms $ease-in-out-quint);
+      }
+
+      .footer {
+        @include transform(translateX(0px));
+        @include transition(transform 500ms $ease-in-out-quint);
+      }
+
+      &.active--navigation {
+        overflow-x: hidden;
+
+        .toggle {
+          
+          &.toggle--navigation {
+
+            &:after {
+              @include nt-icon("cancel", 22, $color-toggle-navigation-active);
+              @include animation-name(rotate);
+              @include animation-duration(100ms);
+              @include animation-timing-function(linear);
+              @include animation-iteration-count(1);
+            }
+          }
+        }
+
+        .navigation--primary {
+        }
+
+        .header, .main, .footer {
+          @include transform(translateX((em(220))));
+        }
+      }
+    }
+  }
+
+  @if $modifier == "revealRight" {
+
+    // Pattern
+    .navigation {
+
+      &.navigation--primary {
+        @include position(fixed, 0 0 null null); 
+        @include size($width-navigation 100%);
+        @include padding(1em null null null);
+
+        .navigation__link {
+          @include padding(.5em 1em .5em 1em);
+        }
+      }
+    }
+
+    // States
+    .page {
+
+      .header {
+        @include transform(translateX(0px));
+        @include transition(transform 500ms $ease-in-out-quint);
+      }
+
+      .main {
+        @include transform(translateX(0px));
+        @include transition(transform 500ms $ease-in-out-quint);
+      }
+
+      .footer {
+        @include transform(translateX(0px));
+        @include transition(transform 500ms $ease-in-out-quint);
+      }
+
+      &.active--navigation {
+
+        .toggle {
+          
+          &.toggle--navigation {
+
+            &:after {
+              @include nt-icon("cancel", 22, $color-toggle-navigation-active);
+              @include animation-name(rotate);
+              @include animation-duration(100ms);
+              @include animation-timing-function(linear);
+              @include animation-iteration-count(1);
+            }
+          }
+        }
+
+        .navigation--primary {
+        }
+
+        .header, .main, .footer {
+          @include transform(translateX(-($width-navigation)));
+        }
+      }
+    }
+  }
+
+  @if $modifier == "revealLeft" {
+
+    // Pattern
+    .navigation {
+
+      &.navigation--primary {
+        @include position(fixed, 0 null null 0); 
+        @include size(em(220) 100%);
+        @include padding(1em null null null);
+
+        .navigation__item {
+        }
+
+        .navigation__link {
+          @include padding(.5em 1em .5em 1em);
+          display: block;
+        }
+
+        .navigation__copy {
+
+        }
+      }
+    }
+
+    // States
+    .page {
+      overflow-x: hidden;
+
+      .header {
+        @include transform(translateX(0px));
+        @include transition(transform 500ms $ease-in-out-quint);
+      }
+
+      .main {
+        @include transform(translateX(0px));
+        @include transition(transform 500ms $ease-in-out-quint);
+      }
+
+      .footer {
+        @include transform(translateX(0px));
+        @include transition(transform 500ms $ease-in-out-quint);
+      }
+
+      &.active--navigation {
+
+        .toggle {
+          
+          &.toggle--navigation {
+
+            &:after {
+              @include nt-icon("cancel", 22, $color-toggle-navigation-active);
+              @include animation-name(rotate);
+              @include animation-duration(100ms);
+              @include animation-timing-function(linear);
+              @include animation-iteration-count(1);
+            }
+          }
+        }
+
+        .navigation--primary {
+        }
+
+        .header, .main, .footer {
+          @include transform(translateX((em(220))));
+        }
+      }
+    }
+  }
+}

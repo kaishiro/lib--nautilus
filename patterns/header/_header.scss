@@ -1,0 +1,95 @@
+/**
+* nt-header
+*
+*/
+
+@mixin nt-header($modifier:default, $context: all) {
+
+  @if $modifier == "default" {
+
+    @if $context == "all" {
+
+      @include position(relative, null null null null);
+      @include nt-layer(loft);
+      @include nt-background($color-header-background, 1);
+
+      .header__inner {
+        @include position(relative, null null null null);
+      }
+    }
+  }
+
+  @if $modifier == "fixed" {
+
+    @include position(fixed, null null null null);
+    @include size(100% auto);
+    @include padding(.5em null .5em null);
+    @include nt-layer(loft);
+    @include nt-background($color-header-background, 1);
+
+    .header__inner {
+      @include nt-container(inner);
+      @include size(null $height-header-palm);
+    }
+
+    @include media($mq-lap) {
+
+      @include padding(1em null 1em null);
+
+      .header__inner {
+        @include size(null $height-header-lap);
+      }
+    }
+
+    @include media($mq-desk) {
+
+      .header__inner {
+        @include size(null $height-header-desk);
+      }
+    }
+  }
+
+  @if $modifier == "transparent" {
+    background: transparent;
+  }
+}
+
+@if $pattern == "main" {
+
+  @if $modifier == "default" {
+
+    @include position(relative, null null null null);
+    @include nt-layer(ground);
+    @include nt-background($color-main-background);
+  }
+}
+
+@if $pattern == "footer" {
+  @include nt-background($color-footer-background);
+
+  @if $modifier == "default" {
+
+    @include position(relative, null null null null);
+    @include nt-layer(ground);
+  }
+
+  @if $modifier == "slideRight" {
+    .footer {
+      @include position(fixed, null 0 0 null);
+      @include size($width-navigation null);
+      @include nt-layer(loft);
+      @include transform(translateX(100%) !important);
+    }
+
+    // States
+    .page {
+
+      &.active--navigation {
+
+        .footer {
+          @include transform(translateX(0%) !important);
+        }
+      }
+    }
+  }
+}

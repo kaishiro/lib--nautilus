@@ -1,0 +1,97 @@
+/**
+* nt-search
+*
+*/
+
+@mixin nt-search($modifier, $context: all) {
+
+  @if $modifier == "slideout" {
+
+    // STATES
+    .page {
+
+      &.active--search {
+
+        .toggle {
+
+          &.toggle--search {
+
+            &:before {
+              @include nt-icon(search, 26, $color-toggle-navigation-active);
+              @include animation-name(rotate);
+              @include animation-duration(500ms);
+              @include animation-timing-function($ease-in-out-quint);
+              @include animation-iteration-count(1);
+            }
+          }
+        }
+
+        .search {
+          
+          .search__inner {
+            @include size(em(250) null);
+          }
+        }
+      }
+    }
+  }
+
+  @if $modifier == "fixed" {
+
+    .search {
+      @include size(100% $height-search-palm);
+      @include position(fixed, 0 null null 0);
+      @include transform(translateY(-100%));
+      @include transition(transform 500ms $ease-in-out-quint);
+      @include nt-background($color-search-background);
+      @include padding(null 2.5% null 2.5%);
+
+      .search__inner {
+        float: left;
+        @include size(100% ($height-search-palm - em(10)));
+        @include margin(em(5) null em(5) null);
+      }
+
+      .search__input {
+        @include size(100% ($height-search-palm - em(10)));
+        line-height: ($height-search-palm - em(10));
+      }
+
+      .search__submit {
+        display: none;
+      }
+    }
+
+    // STATES
+    .page {
+
+      &.active--search {
+         
+        .header {
+          @include transform(translateY($height-search-palm));
+        }
+
+        .main {
+          @include transform(translateY($height-search-palm));
+        }
+
+        .footer {
+          @include transform(translateY($height-search-palm));
+        }
+
+        .toggle {
+          &.toggle--search {
+
+            &:before {
+              @include nt-icon(search, 26, $color-toggle-navigation-active);
+              @include animation-name(rotate);
+              @include animation-duration(500ms);
+              @include animation-timing-function($ease-in-out-quint);
+              @include animation-iteration-count(1);
+            }
+          }
+        }
+      }
+    }
+  }
+}

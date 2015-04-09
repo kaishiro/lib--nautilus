@@ -1,0 +1,40 @@
+/**
+* nt-layout
+*
+*/
+
+@mixin nt-layout($modifier, $context: all) {
+
+  @if $modifier == 'r1-ng-r2-g-d1-100' {
+
+    .layout__region {
+
+      &:nth-child(2) {
+        @include nt-container;
+        @include margin(2em null 5em null);
+
+        .layout__district {
+
+          &:nth-child(1) {
+          }
+        }
+      }
+    }
+
+    @include media($mq-lap) {
+
+      .layout__region {
+
+        &:nth-child(2) {
+
+          .layout__district {
+
+            &:nth-child(1) {
+              @include span-columns(24);
+            }
+          }
+        }
+      }
+    }
+  }
+}

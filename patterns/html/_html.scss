@@ -1,0 +1,23 @@
+/**
+* nt-html
+*
+**/
+
+@mixin nt-html($modifier, $context: all) {
+
+  @if $modifier == 'default' {
+
+    @include nt-background($color-site-background, 1);
+    @extend %font-sans-serif-book;
+    color: $color-text;
+    font-size: $base-font-size-px-mobile;
+    @include size(null 100%);
+    -webkit-font-smoothing: antialiased;
+    @include media($mq-lap) {
+      font-size: $base-font-size-px-tablet;
+    }
+    @include media($mq-desk) {
+      font-size: $base-font-size-px-desktop;
+    }
+  }
+}

@@ -1,0 +1,40 @@
+/**
+* nt-preloader
+*
+*/
+
+@mixin nt-preloader($modifier:default, $context: all) {
+
+  display: block;
+  @include position(fixed, 0 0 0 0);
+  @include size(100% 100%);
+  @include nt-layer(roof);
+  background: #676767; 
+
+  .preloader__loader {
+    @include position(absolute, 50% null null 50%);
+
+    &:before {
+      @include position(absolute, -10px null null -80px);
+      content: url('/images/logo.png');
+      @include size(159px 56px);
+    }
+  }
+  
+  .preloader__animation {
+    @include keyframes(movedash) {
+      to {
+        stroke-dashoffset: 250%;
+      }
+    }
+
+    @include position(absolute, -30px null null 50%);
+    @include margin(null null null -100px);
+    @include animation(movedash 1.5s forwards 0s infinite);
+    fill: none;
+    stroke-width: 4px;
+    stroke: #84b23e;
+    stroke-dasharray: 60;
+    stroke-dashoffset: 65%;
+  }
+}
